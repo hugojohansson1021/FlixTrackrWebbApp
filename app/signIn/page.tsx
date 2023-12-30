@@ -20,30 +20,31 @@ export default function Page() {
  }
  
  const handleSubmit = async (event: FormEvent) => {
-   event.preventDefault()
- 
-   try {
-     const response = await fetch("/api", {
-       method: "POST",
-       headers: {
-         "Content-Type": "application/json",
-       },
-       body: JSON.stringify(formData),
-     })
- 
-     if (response.ok) {
-       const result = await response.json()
-       console.log(result)
-       // You can handle success actions here
-     } else {
-       const error = await response.json()
-       console.error(error)
-       // You can handle error actions here
-     }
-   } catch (error) {
-     console.error("Error:", error)
-   }
- }
+  event.preventDefault();
+
+  try {
+    const response = await fetch("./api/route", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
+
+    if (response.ok) {
+      const result = await response.json();
+      console.log(result);
+    } else {
+      // Om svaret inte är ok, antar vi att det är ett felmeddelande i JSON-format
+      const error = await response.json();
+      console.error('Error response:', error);
+    }
+  } catch (error) {
+    // Logga nätverks- eller parsingfel
+    console.error('Network or parsing error:', error);
+  }
+};
+
  
  return (
    <form onSubmit={handleSubmit}>

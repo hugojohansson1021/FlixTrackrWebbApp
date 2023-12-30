@@ -1,11 +1,11 @@
 const express = require('express');
 const next = require('next');
+const cors = require('cors');
+const rateLimit = require('express-rate-limit');
 
 const dev = process.env.NODE_ENV !== 'production';
 const nextApp = next({ dev });
 const handle = nextApp.getRequestHandler();
-
-
 
 // Din djurdata
 const djurData = [
@@ -17,6 +17,24 @@ const djurData = [
 
 nextApp.prepare().then(() => {
   const server = express();
+
+  // Aktivera CORS för alla förfrågningar
+  server.use(cors());
+
+  // Eller konfigurera CORS mer specifikt
+  // server.use(cors({
+  //   origin: 'https://example.com', // Tillåt bara förfrågningar från denna ursprung
+  //   methods: ['GET', 'POST'], // Tillåt dessa HTTP-metoder
+  // }));
+
+  // Skapa en begränsare för förfrågningar
+  const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minuter
+    max: 100 // begränsa varje IP till 100 förfrågningar per fönsterMs
+  });
+
+  // Använd begränsaren för alla förfrågningar
+  server.use(limiter);
 
   // API-endpoint för att hämta djur
   server.get('/api/animals', (req, res) => {
