@@ -5,6 +5,8 @@ const dev = process.env.NODE_ENV !== 'production';
 const nextApp = next({ dev });
 const handle = nextApp.getRequestHandler();
 
+
+
 // Din djurdata
 const djurData = [
   { namn: "Lejon", klass: "Däggdjur", ordning: "Rovdjur" },

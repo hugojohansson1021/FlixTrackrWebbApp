@@ -1,4 +1,4 @@
-'use client'
+
 "use client"
 import React from 'react';
 import Header from './components/Header'; // Importera Header-komponenten
@@ -17,3 +17,6 @@ const Home = () => {
 };
 
 export default Home;
+
+
+
