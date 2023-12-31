@@ -1,18 +1,24 @@
 import React from 'react';
-import Link from 'next/link'; // Importera Link
+import Link from 'next/link';
 
 const Navbar = () => {
   return (
-    <nav className="bg-gray-200 text-white p-4">
-      <ul className="flex flex-col space-y-2">
-        <li className="text-white">
-          <Link href="/">Hem</Link>
+    <nav className="bg-gray-200 shadow-md p-4">
+      <ul className="flex justify-center space-x-4">
+        <li>
+          <Link href="/">
+            <span className="cursor-pointer text-black hover:text-gray-700 transition duration-300 px-3 py-2 rounded-md">Hem</span>
+          </Link>
         </li>
-        <li className="text-white">
-          <Link href="/animals">animals</Link>
+        <li>
+          <Link href="/animals">
+            <span className="cursor-pointer text-black hover:text-gray-700 transition duration-300 px-3 py-2 rounded-md">Animals</span>
+          </Link>
         </li>
-        <li className="text-white">
-          <Link href="/shop">Shop</Link>
+        <li>
+          <Link href="/shop">
+            <span className="cursor-pointer text-black hover:text-gray-700 transition duration-300 px-3 py-2 rounded-md">Shop</span>
+          </Link>
         </li>
       </ul>
     </nav>

@@ -8,7 +8,7 @@ export default function Page() {
     <>
       <Header /> {/* Lägg till Header-komponenten här */}
       <main>
-        <p>Shop page</p>
+        <p>Hello this is Shoping Page, go to Animal Page</p>
       </main>
     </>
   );

@@ -9,7 +9,7 @@ const Home = () => {
     <>
       <Header />
       <main>
-        <p>Hello main page </p>
+        <p>Hello this is main page go to Animal page  </p>
       </main>
     </>
   );
